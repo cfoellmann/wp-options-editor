@@ -415,9 +415,18 @@ class OptionsManagerSettingsPage {
 		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
+		if ( !in_array( $name, $this->wp_vital_options ) ){
+			$parent = is_network_admin() ? 'settings.php' : 'tools.php';
+			$url = add_query_arg(
+				array(
+					'page'          => 'options_editor',
+					'delete_option' => $name,
+					'nonce'         => wp_create_nonce( 'wp_options_delete_' . $name ),
+				),
+				self_admin_url( $parent )
+			);
 
-		if ( ! in_array( $name, $this->wp_vital_options, true ) ) {
-			return "<a href='javascript:void(0);' onclick=\"verify_option_deletion( '$name', '" . admin_url() . "tools.php?page=options_editor&delete_option=$name&nonce=" . wp_create_nonce( 'wp_options_delete_' . $name ) . "' );\" class='button-primary' />" . __( 'Delete', 'wp-options-editor' ) . "</a>";
+			return "<a href='javascript:void(0);' onclick=\"verify_option_deletion( '$name', '".$url."' );\" class='button-primary' />".__( 'Delete', 'options_editor' )."</a>";
 		}
 	}
 
