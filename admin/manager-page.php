@@ -262,8 +262,10 @@ class OptionsManagerSettingsPage {
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_ajax_manager_ajax_update_option', array( $this, 'manager_ajax_update_option_callback' ) );
 
-		// Add settings link to plugins page.
-		add_filter( 'plugin_action_links_' . plugin_basename( $this->file ) , array( $this, 'add_settings_link' ) );
+		// Add settings link to plugins page
+		$prefix = is_network_admin() ? 'network_admin_' : '';
+		add_filter( $prefix.'plugin_action_links_' . plugin_basename( $this->file ) , array( $this, 'add_settings_link' ) );
+
 	}
 
 	/**
@@ -331,9 +333,19 @@ class OptionsManagerSettingsPage {
 	 * @return array Modified links
 	 */
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="tools.php?page=options_editor">' . __( 'Edit Options', 'wp-options-editor' ) . '</a>';
-		array_push( $links, $settings_link );
-		return $links;
+
+		$parent = is_network_admin() ? 'settings.php' : 'tools.php';
+		$url = add_query_arg(
+			array(
+				'page' => 'options_editor',
+			),
+			self_admin_url( $parent )
+		);
+
+		$links[] = '<a href="'.$url.'">' . __( 'Edit Options', 'options_editor' ) . '</a>';
+
+  		return $links;
+
 	}
 
 	/**
