@@ -500,7 +500,7 @@ class OptionsManagerSettingsPage {
 	}
 
 	/**
-	 * Quick count of all options in the wp_options table.
+	 * Quick count of all options in the wp_options|wp_sitemeta table.
 	 *
 	 * @return string H3 with count of options
 	 */
@@ -512,10 +512,16 @@ class OptionsManagerSettingsPage {
 			return;
 		}
 
-		$count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->options" );
+		if ( is_network_admin()) {
+			$count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->sitemeta" );
+			$table = 'sitemeta';
+		} else {
+			$count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->options" );
+			$table = 'options';
+		}
 
-		if ( $count ) {
-			return "<h3>" . sprintf( __( '%d total options in the %s table', 'wp-options-editor' ), $count, $wpdb->prefix . 'options' ) . "</h3>";
+		if ( $count ){
+			return "<h3>" . sprintf( __( '%d total options in the %s table', 'wp-options-editor' ), $count, $wpdb->prefix.$table ) . "</h3>";
 		}
 	}
 
