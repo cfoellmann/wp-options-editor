@@ -270,14 +270,25 @@ class OptionsManagerSettingsPage {
 	 * Add settings page to admin menu.
 	 */
 	public function add_menu_item() {
-		$page = add_submenu_page(
-			'tools.php',
-			__( 'Manage WP Options Table', 'wp-options-editor' ),
-			__( 'Manage wp_options', 'wp-options-editor' ),
-			'manage_options',
-			'options_editor',
-			array( $this, 'settings_page' )
-		);
+		if ( is_network_admin() ) {
+			$page = add_submenu_page(
+				'settings.php',
+				__( 'Manage WP Sitemeta Table', 'options_editor' ),
+				__( 'Manage wp_sitemeta', 'options_editor' ),
+				'manage_options',
+				'options_editor',
+				array( $this, 'settings_page' )
+			);
+		} else {
+			$page = add_submenu_page(
+				'tools.php',
+				__( 'Manage WP Options Table', 'options_editor' ),
+				__( 'Manage wp_options', 'options_editor' ),
+				'manage_options',
+				'options_editor',
+				array( $this, 'settings_page' )
+			);
+		}
 
 		add_action( 'admin_print_styles-' . $page, array( $this, 'options_assets' ) );
 		add_action( 'load-' . $page, array( $this, 'manager_delete_options' ) );
