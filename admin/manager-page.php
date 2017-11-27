@@ -594,6 +594,14 @@ class OptionsManagerSettingsPage {
 			return;
 		}
 
+		$parent   = is_network_admin() ? 'settings.php' : 'tools.php';
+		$post_url = add_query_arg(
+			array(
+				'page' => 'options_editor',
+			),
+			self_admin_url( $parent )
+		);
+
 		// Build page HTML.
 		$html .= '<div class="wrap" id="options_editor">';
 			$html .= '<h2>' . __( 'Manage Options' , 'wp-options-editor' ) . '</h2>';
@@ -611,7 +619,7 @@ class OptionsManagerSettingsPage {
 
 				$html .= "<a href='javascript:void(0);' class='button-primary add-option'>" . __( 'Add Option', 'wp-options-editor' ) . "</a>";
 
-				$html .= "<form method='POST' action='" . admin_url() . "tools.php?page=options_editor' class='add-option-form'>";
+				$html .= "<form method='POST' action='".$post_url."' class='add-option-form'>";
 
 					$html .= "<h2>" . __( 'Add Option', 'wp-options-editor' ) . "</h2>";
 
