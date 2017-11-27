@@ -566,10 +566,18 @@ class OptionsManagerSettingsPage {
 	public function get_all_options_cacheless() {
 		global $wpdb;
 
-		$alloptions_db = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options" );
+		if ( is_network_admin()) {
+			$alloptions_db = $wpdb->get_results( "SELECT meta_key, meta_value FROM $wpdb->sitemeta" );
 
-		foreach ( (array) $alloptions_db as $o ) {
-			$alloptions[ $o->option_name ] = $o->option_value;
+			foreach ( (array) $alloptions_db as $o ) {
+				$alloptions[$o->meta_key] = $o->meta_value;
+			}
+		} else {
+			$alloptions_db = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options" );
+
+			foreach ( (array) $alloptions_db as $o ) {
+				$alloptions[$o->option_name] = $o->option_value;
+			}
 		}
 
 		return $alloptions;
