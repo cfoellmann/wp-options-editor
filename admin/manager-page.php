@@ -259,6 +259,7 @@ class OptionsManagerSettingsPage {
 		);
 
 		add_action( 'admin_menu' , array( $this, 'add_menu_item' ) );
+		add_action( 'network_admin_menu' , array( $this, 'add_menu_item' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_ajax_manager_ajax_update_option', array( $this, 'manager_ajax_update_option_callback' ) );
 
