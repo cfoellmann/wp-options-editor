@@ -256,6 +256,7 @@ class OptionsManagerSettingsPage {
 		add_action( 'admin_menu' , array( $this, 'add_menu_item' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_action( 'wp_ajax_manager_ajax_update_option', array( $this, 'manager_ajax_update_option_callback' ) );
+		add_action( 'wp_ajax_wpoe_edit_serialized_data', array( $this, 'edit_serialized_data' ) );
 
 		// Add settings link to plugins page
 		add_filter( 'plugin_action_links_' . plugin_basename( $this->file ) , array( $this, 'add_settings_link' ) );
@@ -318,7 +319,12 @@ class OptionsManagerSettingsPage {
 
 		wp_enqueue_style( 'manager-css' );
         wp_enqueue_script( 'comment-notifier-js' );
+		wp_enqueue_script( 'thickbox' );
+		wp_enqueue_style( 'thickbox' );
 
+		if ( is_network_admin() ) {
+			add_action( 'admin_head', '_thickbox_path_admin_subfolder' );
+		}
 	}
 
 
@@ -646,7 +652,24 @@ class OptionsManagerSettingsPage {
 
 								$html .= "<td>".$this->wp_options_source( $name )."</td>";
 								$html .= "<td class='option-name'>$name</td>";
-								$html .= "<td class='option-value'><div class='edit' id='$name'>$value</div></td>";
+								$html .= "<td class='option-value'>";
+								if ( is_serialized( $value ) ) {
+									$button_url = add_query_arg(
+										array(
+											'action'          => 'wpoe_edit_serialized_data',
+											'height'          => '800',
+											'width'           => '800',
+											'serialized_name' => urlencode( $name ),
+										),
+										admin_url( 'admin-ajax.php' )
+									);
+									$html .= "<div class='serialized' id='$name'>";
+									$html .= '<a class="button edit-json thickbox" href="' . $button_url . '">Edit serialized data {;}</a>';
+									$html .= "</div>";
+								} else {
+									$html .= "<div class='edit' id='$name'>$value</div>";
+								}
+								$html .= "</td>";
 								$html .= "<td>".$this->get_options_delete_button( $name )."</td>";
 
 							$html .= "</tr>";
@@ -664,6 +687,13 @@ class OptionsManagerSettingsPage {
 
 		echo $html;
 
+	}
+
+	function edit_serialized_data() {
+
+		include 'thickbox-edit.php';
+
+		exit();
 	}
 
 }
