@@ -585,42 +585,57 @@ class OptionsManagerSettingsPage {
 
 						$html .= "<th scope='col' class='manage-column column-source' style='width:7%;'>" . __( 'Author', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='sort manage-column column-name' data-sort='option-name'>" . __( 'Option Name', 'wp-options-editor' ) . "</th>";
+						$html .= "<th scope='col' class='manage-column column-source' style='width:7%;'>".__( 'Type', 'options_editor' )."</th>";
 						$html .= "<th scope='col' class='sort manage-column column-information' data-sort='option-value'>" . __( 'Option Data', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='manage-column column-date' style='width:14%;'>" . __( 'Actions', 'wp-options-editor' ) . "</th>";
 
 					$html .= "</thead>";
 
-					$html .= "<tbody class='list'>";
-
-						$i = 0;
-
-						foreach ( $all_options as $name => $value ) {
-
-							$class = '';
-							if ( $i & 1 ) {
-								$class = ' class="alternate"';
-							}
-
-							$html .= "<tr$class>";
-
-								$html .= "<td>" . $this->wp_options_source( $name ) . "</td>";
-								$html .= "<td class='option-name'>$name</td>";
-								$html .= "<td class='option-value'><div class='edit' id='$name'>$value</div></td>";
-								$html .= "<td>" . $this->get_options_delete_button( $name ) . "</td>";
-
-							$html .= "</tr>";
-
-							$i++;
-						}
-
-					$html .= "</tbody>";
+					$html .= $this->table_body( $all_options );
 
 				$html .= "</table>";
 
-				$html .= "</div>";
+			$html .= "</div>";
 
 		$html .= "</div>";
 
 		echo $html;
+
 	}
+
+	public function table_body( $all_options ) {
+
+		$html = '';
+
+		$html .= "<tbody class='list'>";
+
+		$i    = 0;
+
+		foreach ( $all_options as $name => $value ) {
+
+			$value_type = is_serialized( $value );
+			$class      = '';
+			if ( $i & 1 ) {
+				$class = ' class="alternate"';
+			}
+
+			$html .= "<tr$class>";
+
+			$html .= "<td>" . $this->wp_options_source( $name ) . "</td>";
+			$html .= "<td class='option-name'>$name</td>";
+			$html .= "<td class='option-type'>" . ( $value_type ? 'Serialized {;}' : 'String' ) . "</td>";
+			$html .= "<td class='option-value'><div class='edit' id='$name'>$value</div></td>";
+			$html .= "<td>" . $this->get_options_delete_button( $name ) . "</td>";
+
+			$html .= "</tr>";
+
+			$i ++;
+		}
+
+		$html .= "</tbody>";
+
+		return $html;
+
+	}
+
 }
