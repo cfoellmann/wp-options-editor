@@ -1,0 +1,23 @@
+{
+  "name": "wp-options-editor",
+  "version": "1.2.0",
+  "description": "Easily view, edit, add, and delete all of your WP Options rows from the dashboard",
+  "license": "GPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikeselander/wp-options-editor.git"
+  },
+  "author": "Mike Selander",
+  "bugs": {
+    "url": "https://github.com/mikeselander/wp-options-editor/issues"
+  },
+  "homepage": "https://github.com/mikeselander/wp-options-editor#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-wp-pot": "^2.3.1",
+    "jquery-jeditable": "^2.0.6",
+    "list.js": "^1.5.0"
+  }
+}

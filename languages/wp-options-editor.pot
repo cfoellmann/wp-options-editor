@@ -1,141 +1,138 @@
-# Copyright (C) 2016 WP Options Editor
+# Copyright (C) 2018 WP Options Editor
 # This file is distributed under the same license as the WP Options Editor package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Options Editor 1.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/WP Options "
-"Editor\n"
-"POT-Creation-Date: 2016-04-03 19:20:50+00:00\n"
+"Project-Id-Version: WP Options Editor\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/manager-page.php:275
+#: admin/manager-page.php:257
 msgid "Manage WP Options Table"
 msgstr ""
 
-#: admin/manager-page.php:276
+#: admin/manager-page.php:258
 msgid "Manage wp_options"
 msgstr ""
 
-#: admin/manager-page.php:312
+#: admin/manager-page.php:287
 msgid "You are about to delete the"
 msgstr ""
 
-#: admin/manager-page.php:313
-msgid ""
-"option - this can break vital parts of your website. Do you want to continue?"
+#: admin/manager-page.php:288
+msgid "option - this can break vital parts of your website. Do you want to continue?"
 msgstr ""
 
-#: admin/manager-page.php:333
+#: admin/manager-page.php:305
 msgid "Edit Options"
 msgstr ""
 
-#: admin/manager-page.php:357
+#: admin/manager-page.php:332
 msgid "WordPress Core option"
 msgstr ""
 
-#: admin/manager-page.php:361
+#: admin/manager-page.php:336
 msgid "Theme option"
 msgstr ""
 
-#: admin/manager-page.php:365
+#: admin/manager-page.php:340
 msgid "Jetpack option"
 msgstr ""
 
-#: admin/manager-page.php:369
+#: admin/manager-page.php:344
 msgid "WooCommerce option"
 msgstr ""
 
-#: admin/manager-page.php:373
+#: admin/manager-page.php:348
 msgid "Gravity Forms option"
 msgstr ""
 
-#: admin/manager-page.php:377
+#: admin/manager-page.php:352
 msgid "iThemes Security option"
 msgstr ""
 
-#: admin/manager-page.php:381
+#: admin/manager-page.php:356
 msgid "Yoast/WP SEO option"
 msgstr ""
 
-#: admin/manager-page.php:385
+#: admin/manager-page.php:360
 msgid "Plugin option"
 msgstr ""
 
-#: admin/manager-page.php:407
+#: admin/manager-page.php:379
 msgid "Delete"
 msgstr ""
 
-#: admin/manager-page.php:503
+#: admin/manager-page.php:468
 msgid "%d total options in the %s table"
 msgstr ""
 
-#: admin/manager-page.php:576
+#: admin/manager-page.php:535
 msgid "Manage Options"
 msgstr ""
 
-#: admin/manager-page.php:585
+#: admin/manager-page.php:544
 msgid "Live Search"
 msgstr ""
 
-#: admin/manager-page.php:586
+#: admin/manager-page.php:545
 msgid "Search"
 msgstr ""
 
-#: admin/manager-page.php:589 admin/manager-page.php:593
+#: admin/manager-page.php:548, admin/manager-page.php:552
 msgid "Add Option"
 msgstr ""
 
-#: admin/manager-page.php:601
+#: admin/manager-page.php:560
 msgid "Option Name:"
 msgstr ""
 
-#: admin/manager-page.php:608
+#: admin/manager-page.php:567
 msgid "Option Value:"
 msgstr ""
 
-#: admin/manager-page.php:619
+#: admin/manager-page.php:578
 msgid "Submit"
 msgstr ""
 
-#: admin/manager-page.php:627
+#: admin/manager-page.php:586
 msgid "Author"
 msgstr ""
 
-#: admin/manager-page.php:628
+#: admin/manager-page.php:587
 msgid "Option Name"
 msgstr ""
 
-#: admin/manager-page.php:629
+#: admin/manager-page.php:588
 msgid "Option Data"
 msgstr ""
 
-#: admin/manager-page.php:630
+#: admin/manager-page.php:589
 msgid "Actions"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
+#: wp-options-editor.php:3
 msgid "WP Options Editor"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
+#: wp-options-editor.php:4
 msgid "http://wordpress.org/plugins/wp-options-editor/"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid ""
-"Easily view, edit, add, and delete all of your WP Options rows from the "
-"dashboard"
+#: wp-options-editor.php:5
+msgid "Easily view, edit, add, and delete all of your WP Options rows from the dashboard"
 msgstr ""
 
-#. Author of the plugin/theme
+#: wp-options-editor.php:6
 msgid "Mike Selander"
 msgstr ""
 
-#. Author URI of the plugin/theme
+#: wp-options-editor.php:8
 msgid "http://www.mikeselander.com/"
 msgstr ""
