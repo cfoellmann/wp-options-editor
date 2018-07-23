@@ -551,15 +551,15 @@ jQuery( document ).on( 'click', '.add-option', function(){
         name       : 'value',
         id         : 'id',
         type       : 'textarea',
-        cancel     : 'Cancel',
-        submit     : 'OK',
+        cancel     : ajax_object.cancel,
+        submit     : ajax_object.ok,
         width      : 'auto',
         height     : 'auto',
         event      : 'click.editable',
         onblur     : 'cancel',
         loadtype   : 'GET',
-        loadtext   : 'Loading...',
-        placeholder: 'Click to edit',
+        loadtext   : ajax_object.loading,
+        placeholder: ajax_object.clickToEdit,
         loaddata   : {},
         submitdata : {},
         ajaxoptions: {}
@@ -573,6 +573,6 @@ jQuery(document).ready(function() {
 
 jQuery('.edit').editable( ajax_object.ajax_url, {
      type      : 'textarea',
-     cancel    : 'Cancel',
-     submit    : 'OK'
+     cancel    : ajax_object.cancel,
+     submit    : ajax_object.ok
 });

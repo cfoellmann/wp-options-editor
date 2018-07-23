@@ -286,6 +286,10 @@ class OptionsManagerSettingsPage {
 				'ajax_url'     => admin_url( 'admin-ajax.php' ),
 				'noticeStrOne' => __( 'You are about to delete the', 'wp-options-editor' ),
 				'noticeStrTwo' => __( 'option - this can break vital parts of your website. Do you want to continue?', 'wp-options-editor' ),
+				'ok'           => __( 'OK' ),
+				'cancel'       => __( 'Cancel' ),
+				'clickToEdit'  => __( 'Click to edit', 'wp-options-editor' ),
+				'loading'      => __( 'Loading...', 'wp-options-editor' ),
 			)
 		);
 
