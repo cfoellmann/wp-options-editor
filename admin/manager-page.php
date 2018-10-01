@@ -528,10 +528,13 @@ class OptionsManagerSettingsPage {
 	public function get_all_options_cacheless() {
 		global $wpdb;
 
-		$alloptions_db = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options" );
+		$alloptions_db = $wpdb->get_results( "SELECT * FROM $wpdb->options" );
 
 		foreach ( (array) $alloptions_db as $o ) {
-			$alloptions[ $o->option_name ] = $o->option_value;
+			$alloptions[ $o->option_name ] = array(
+				'value' => $o->option_value,
+				'autoload' => $o->autoload,
+			);
 		}
 
 		return $alloptions;
@@ -604,6 +607,7 @@ class OptionsManagerSettingsPage {
 						$html .= "<th scope='col' class='manage-column column-source' style='width:7%;'>" . __( 'Author', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='sort manage-column column-name' data-sort='option-name'>" . __( 'Option Name', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='sort manage-column column-information' data-sort='option-value'>" . __( 'Option Data', 'wp-options-editor' ) . "</th>";
+						$html .= "<th scope='col' class='sort manage-column column-autoload' style='width:7%;' data-sort='option-autoload'>" . __( 'Autoload Status', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='manage-column column-date' style='width:14%;'>" . __( 'Actions', 'wp-options-editor' ) . "</th>";
 
 					$html .= "</thead>";
@@ -623,7 +627,8 @@ class OptionsManagerSettingsPage {
 
 								$html .= "<td>" . $this->wp_options_source( $name ) . "</td>";
 								$html .= "<td class='option-name'>$name</td>";
-								$html .= "<td class='option-value'><div class='edit' id='$name'>$value</div></td>";
+								$html .= "<td class='option-value'><div class='edit' id='$name'>".$value['value']."</div></td>";
+								$html .= "<td class='option-autoload'>".$value['autoload']."</td>";
 								$html .= "<td>" . $this->get_options_delete_button( $name ) . "</td>";
 
 							$html .= "</tr>";
