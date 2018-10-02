@@ -295,10 +295,14 @@ class OptionsManagerSettingsPage {
 	 * Load settings JS & CSS on our specific admin page.
 	 */
 	public function options_assets() {
-		// We're including the farbtastic script & styles here because they're needed for the colour picker.
-		wp_register_script( 'comment-notifier-js', $this->assets_url . 'js/manager-list.js', array( 'jquery' ), $this->plugin_version, true );
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		wp_register_script( 'jquery-jeditable', $this->assets_url . 'js/jquery.jeditable' . $suffix . '.js', array( 'jquery' ), '1.7.3', true );
+		wp_register_script( 'list-js', $this->assets_url . 'js/list' . $suffix . '.js', array(), '1.5.0', true );
+		wp_register_script( 'wp-options-editor', $this->assets_url . 'js/admin' . $suffix . '.js', array( 'jquery-jeditable', 'list-js' ), $this->plugin_version, true );
+
 		wp_localize_script(
-			'comment-notifier-js',
+			'wp-options-editor',
 			'ajax_object',
 			array(
 				'ajax_url'     => admin_url( 'admin-ajax.php' ),
@@ -307,10 +311,10 @@ class OptionsManagerSettingsPage {
 			)
 		);
 
-		wp_register_style( 'manager-css', $this->assets_url . 'css/manager-css.css', array(), $this->plugin_version, 'all' );
+		wp_register_style( 'wp-options-editor', $this->assets_url . 'css/admin' . $suffix . '.css', array(), $this->plugin_version, 'all' );
 
-		wp_enqueue_style( 'manager-css' );
-		wp_enqueue_script( 'comment-notifier-js' );
+		wp_enqueue_style( 'wp-options-editor' );
+		wp_enqueue_script( 'wp-options-editor' );
 	}
 
 	/**
