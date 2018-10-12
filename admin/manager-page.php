@@ -500,16 +500,23 @@ class OptionsManagerSettingsPage {
 			return;
 		}
 
-		$name  = $_REQUEST['id'];
-		$value = $_REQUEST['value'];
+		$option_name = $_REQUEST['option_name'];
+
+		if ( isset( $_REQUEST['option_value'] ) ) {
+			$value = $_REQUEST['option_value'];
+			$option = 'option_value';
+		} elseif ( isset( $_REQUEST['autoload'] ) ) {
+			$value = $_REQUEST['autoload'];
+			$option = 'autoload';
+		}
 
 		$wpdb->update(
 			$wpdb->options,
 			array(
-				'option_value' => $value,
+				$option => $value,
 			),
 			array(
-				'option_name' => $name,
+				'option_name' => $option_name,
 			),
 			array( '%s' ),
 			array( '%s' )
@@ -607,7 +614,7 @@ class OptionsManagerSettingsPage {
 						$html .= "<th scope='col' class='manage-column column-source' style='width:7%;'>" . __( 'Author', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='sort manage-column column-name' data-sort='option-name'>" . __( 'Option Name', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='sort manage-column column-information' data-sort='option-value'>" . __( 'Option Data', 'wp-options-editor' ) . "</th>";
-						$html .= "<th scope='col' class='sort manage-column column-autoload' style='width:7%;' data-sort='option-autoload'>" . __( 'Autoload Status', 'wp-options-editor' ) . "</th>";
+						$html .= "<th scope='col' class='sort manage-column column-autoload' style='width:7%;' data-sort='option-autoload'>" . __( 'Autoload', 'wp-options-editor' ) . "</th>";
 						$html .= "<th scope='col' class='manage-column column-date' style='width:14%;'>" . __( 'Actions', 'wp-options-editor' ) . "</th>";
 
 					$html .= "</thead>";
@@ -627,8 +634,8 @@ class OptionsManagerSettingsPage {
 
 								$html .= "<td>" . $this->wp_options_source( $name ) . "</td>";
 								$html .= "<td class='option-name'>$name</td>";
-								$html .= "<td class='option-value'><div class='edit' id='$name'>".$value['value']."</div></td>";
-								$html .= "<td class='option-autoload'>".$value['autoload']."</td>";
+								$html .= "<td class='option-value'><div class='edit-value' id='$name'>".$value['value']."</div></td>";
+								$html .= "<td class='option-autoload'><div class='edit-autoload' id='$name'>".$value['autoload']."</div></td>";
 								$html .= "<td>" . $this->get_options_delete_button( $name ) . "</td>";
 
 							$html .= "</tr>";

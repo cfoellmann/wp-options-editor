@@ -18,12 +18,7 @@ fieldset.search-options {
 	table-layout: fixed;
 }
 
-.edit {
-	max-height: 500px;
-	overflow: hidden;
-}
-
-.edit {
+.edit-value {
 	max-height: 500px;
 	overflow: hidden;
 	padding: 10px 0;

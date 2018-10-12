@@ -571,8 +571,20 @@ jQuery(document).ready(function() {
 
 });
 
-jQuery('.edit').editable( ajax_object.ajax_url, {
-     type      : 'textarea',
-     cancel    : 'Cancel',
-     submit    : 'OK'
+jQuery('.edit-value').editable(ajax_object.ajax_url, {
+    id: 'option_name',
+    name: 'option_value',
+    type: 'textarea',
+    cancel: 'Cancel',
+    submit: 'OK',
+});
+
+// inline select
+jQuery('.edit-autoload').editable(ajax_object.ajax_url, {
+    id: 'option_name',
+    name: 'autoload',
+    type: "select",
+    data: '{"yes":"yes","no":"no"}',
+    cancel: '',
+    submit: '',
 });
