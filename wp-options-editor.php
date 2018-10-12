@@ -13,5 +13,6 @@ Domain Path: /languages
 // Load the settings page if we're in the admin section.
 if ( is_admin() ) {
 	require_once( 'admin/manager-page.php' );
+	require_once( 'admin/options.php' );
 	$settings = new OptionsManagerSettingsPage( __FILE__ );
 }
