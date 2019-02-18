@@ -264,6 +264,9 @@ class OptionsManagerSettingsPage {
 
 		// Add settings link to plugins page.
 		add_filter( 'plugin_action_links_' . plugin_basename( $this->file ) , array( $this, 'add_settings_link' ) );
+
+		/** Add card to tools.php */
+		add_action( 'tool_box', array( $this, 'add_tool_box' ) );
 	}
 
 	/**
@@ -282,6 +285,14 @@ class OptionsManagerSettingsPage {
 		add_action( 'admin_print_styles-' . $page, array( $this, 'options_assets' ) );
 		add_action( 'load-' . $page, array( $this, 'manager_delete_options' ) );
 		add_action( 'load-' . $page, array( $this, 'manager_add_option' ) );
+	}
+
+	public function add_tool_box() { ?>
+		<div class="card">
+			<h2 class="title"><?php _e( 'Manage Options' ); ?></h2>
+			<p><?php printf( __( 'Edit all your sites options directly in the <a href="%s">WP Options Editor</a>' ), add_query_arg( array( 'page' => 'options_editor' ), admin_url( 'tools.php' ) ) ); ?></p>
+		</div>
+		<?php
 	}
 
 	/**
