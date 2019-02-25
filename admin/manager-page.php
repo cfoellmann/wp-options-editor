@@ -91,7 +91,7 @@ class OptionsManagerSettingsPage {
 		$this->assets_dir       = trailingslashit( $this->dir ) . 'assets';
 		$this->assets_url       = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
 		$this->settings_base    = 'cn_';
-		$this->plugin_version   = '1.2.0-dev';
+		$this->plugin_version   = '1.1.1';
 		$this->wp_vital_options = array(
 			'siteurl',
 			'blogname',

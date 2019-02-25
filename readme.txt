@@ -3,8 +3,8 @@ Contributors: mikeselander
 Donate link: https://mikeselander.com
 Tags: wp_options, development, wp options table, edit, delete, add
 Requires at least: 3.4
-Tested up to: 4.5
-Stable tag: 1.1
+Tested up to: 5.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,20 +27,11 @@ Please be careful when using this plugin! You can easily delete an option that i
 1. Search Your Options
 2. Editing Options
 
-== Upgrade Notice ==
-
-= 1.1 =
-* Cleanup Release
-* Fixed all WP_DEBUG-triggered errors
-* General code audit/cleanup
-* Fixed GF con & added Yoast SEO icon
-* Fixed wording in search & replace sections
-* Added several security checks on all admin functions
-
-= 1.0.0 =
-Initial Release
-
 == Changelog ==
+
+= 1.1.1 =
+* Fixed jetpack and yoast settings detection
+* Fixed protected WP core options list
 
 = 1.1 =
 * Cleanup Release
