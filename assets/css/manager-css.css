@@ -32,3 +32,12 @@ fieldset.search-options {
 .source-dashicon:not(.dashicons-wordpress) {
 	color: #000;
 }
+
+/** Icons */
+
+/** Jetpack */
+.manage-jetpack {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' role='img' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M16 3.2c7.04 0 12.8 5.76 12.8 12.8S23.04 28.8 16 28.8 3.2 23.04 3.2 16 8.96 3.2 16 3.2zm-1.6 14.4V6.4L8 17.6h6.4zm3.2 8L24 14.4h-6.4v11.2z' data-name='layer1' fill='%2300be28'%3E%3C/path%3E%3C/svg%3E");
+	width: 25px;
+	height: 25px;
+}

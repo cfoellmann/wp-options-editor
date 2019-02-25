@@ -355,7 +355,7 @@ class OptionsManagerSettingsPage {
 
 			// Jetpack.
 		} elseif ( preg_match( '/jetpack\w{3,}/', $name ) ) {
-			$html .= "<a class='dashicons source-dashicon' style='font-family: jetpack!important; font-size: 1.3em!important;' title='" . __( 'Jetpack option', 'wp-options-editor' ) . "'>&#61698;</a>";
+			$html .= "<a class='dashicons source-dashicon manage-jetpack' title='" . __( 'Jetpack option', 'wp-options-editor' ) . "'>&nbsp;</a>";
 
 			// Woocommerce.
 		} elseif ( preg_match( '/woocommerce\w{3,}/', $name ) || preg_match( '/shop_\w{3,}_image_size/', $name ) ) {
